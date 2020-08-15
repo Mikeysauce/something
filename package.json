@@ -1,0 +1,26 @@
+{
+  "name": "tsexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "start": "concurrently \"npm --prefix server start\" \"npm --prefix client start\"",
+    "install": "concurrently \"npm --prefix server install\" \"npm --prefix client install\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikeysauce/something.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mikeysauce/something/issues"
+  },
+  "homepage": "https://github.com/Mikeysauce/something#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "git-cz": "^4.7.0"
+  }
+}
