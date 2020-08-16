@@ -11,8 +11,12 @@ const baseStyles = css`
   h3,
   h4,
   h5,
-  h6 {
+  h6,
+  p {
     font-family: "Poppins", sans-serif;
+  }
+  p:not(:last-of-type) {
+    margin-bottom: 1rem;
   }
   h1 {
     font-size: 3rem;

@@ -6,10 +6,25 @@ interface NavItemProps {
   withHover?: boolean;
 }
 
-const StyledNav = styled.nav`
+const Buttons = styled.div`
+  margin-left: 1rem;
+  display: flex;
+`;
+
+const NavActionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-basis: 30%;
+`;
+
+const Nav = styled.nav`
+  display: flex;
   background: #34558b;
   padding: ${rem("20px")};
   color: #ffffff;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const NavItemContainer = styled.ul`
@@ -22,6 +37,12 @@ const NavItem = styled.li<NavItemProps>`
   font-size: ${rem("25px")};
   color: white;
   padding: 0 ${rem("16px")};
+
+  ${(props) =>
+    props.active &&
+    css`
+      color: ${props.theme.colors.secondary};
+    `};
 
   a {
     text-decoration: none;
@@ -52,11 +73,6 @@ const NavItem = styled.li<NavItemProps>`
         }
       `}
   }
-  ${(props) =>
-    props.active &&
-    css`
-      color: ${props.theme.colors.secondary};
-    `}
 `;
 
-export { StyledNav, NavItem, NavItemContainer };
+export { Nav, NavItem, NavItemContainer, NavActionsContainer, Buttons };

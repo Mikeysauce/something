@@ -1,6 +1,7 @@
-import { useRouter } from "next/router";
-import { StyledNav, NavItemContainer } from "./styles";
+import { Nav, NavItemContainer, NavActionsContainer, Buttons } from "./styles";
 import { NavItem } from "./NavItem";
+import { SearchBox } from "../SearchBox";
+import { Button } from "../Button/styles";
 
 const navigationItems = [
   {
@@ -11,19 +12,34 @@ const navigationItems = [
     href: "/products",
     label: "Products",
   },
+  {
+    href: "/reviews",
+    label: "Reviews",
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+  },
 ];
 
 const Navigation = ({ items = navigationItems, currentRoute }) => {
   return (
-    <StyledNav>
+    <Nav>
       <NavItemContainer>
         {items.map(({ href, label }) => (
-          <NavItem href={href} active={currentRoute === href}>
+          <NavItem key={label} href={href} active={currentRoute === href}>
             {label}
           </NavItem>
         ))}
       </NavItemContainer>
-    </StyledNav>
+      <NavActionsContainer>
+        <SearchBox />
+        <Buttons>
+          <Button secondary>Register</Button>
+          <Button clear>Login</Button>
+        </Buttons>
+      </NavActionsContainer>
+    </Nav>
   );
 };
 

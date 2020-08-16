@@ -8,6 +8,9 @@ const theme: DefaultTheme = {
   text: {
     grey: "#F8F8F8",
   },
+  fonts: {
+    primary: 'font-family: "Poppins", sans-serif;',
+  },
 };
 
 export { theme };

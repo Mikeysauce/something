@@ -11,5 +11,8 @@ declare module "styled-components" {
     text: {
       grey: string;
     };
+    fonts: {
+      primary: string;
+    };
   }
 }

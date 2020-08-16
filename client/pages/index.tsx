@@ -4,7 +4,6 @@ import axios from "axios";
 const Home = ({ data }) => (
   <div>
     <h1>Home</h1>
-    <pre>{JSON.stringify(data, null, 2)}</pre>
   </div>
 );
 
