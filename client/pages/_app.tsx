@@ -1,9 +1,10 @@
-import App from "next/app";
-import reset from "styled-reset";
-import { withRouter } from "next/router";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-import { theme, baseStyles } from "../util/styles";
-import { Navigation } from "../components/Navigation";
+import App from 'next/app';
+import reset from 'styled-reset';
+import { withRouter } from 'next/router';
+import { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { theme, baseStyles } from '../util/styles';
+import { Navigation } from '../components/Navigation';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -16,7 +17,10 @@ class MyApp extends App {
     return (
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Navigation currentRoute={router.route} />
+        <Navigation
+          currentRoute={router.route}
+          isLoggedIn={pageProps.isLoggedIn}
+        />
         <Component {...pageProps} />
       </ThemeProvider>
     );

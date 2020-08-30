@@ -1,5 +1,6 @@
-import styled, { css } from "styled-components";
-import { rem } from "polished";
+import styled, { css } from 'styled-components';
+import { up, down, between, only } from 'styled-breakpoints';
+import { rem } from 'polished';
 
 interface NavItemProps {
   active?: boolean;
@@ -15,16 +16,32 @@ const NavActionsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-basis: 30%;
+
+  ${down('tablet')} {
+    flex-direction: column;
+    > :first-child {
+      margin: 1rem 0;
+    }
+  }
+
+  ${between('tablet', 'desktop')} {
+    flex-basis: 34%;
+  }
+  ${up('lgDesktop')} {
+    flex-basis: 28%;
+  }
 `;
 
 const Nav = styled.nav`
   display: flex;
   background: #34558b;
-  padding: ${rem("20px")};
+  padding: ${rem('20px')};
   color: #ffffff;
   justify-content: space-between;
   align-items: center;
+  ${down('tablet')} {
+    flex-direction: column;
+  }
 `;
 
 const NavItemContainer = styled.ul`
@@ -33,10 +50,15 @@ const NavItemContainer = styled.ul`
 `;
 
 const NavItem = styled.li<NavItemProps>`
-  font-family: "Poppins", sans-serif;
-  font-size: ${rem("25px")};
+  font-family: 'Poppins', sans-serif;
+  font-size: ${rem('18px')};
+  padding: 0 ${rem('5px')};
   color: white;
-  padding: 0 ${rem("16px")};
+
+  ${up('tablet')} {
+    font-size: ${rem('25px')};
+    padding: 0 ${rem('16px')};
+  }
 
   ${(props) =>
     props.active &&
@@ -54,7 +76,7 @@ const NavItem = styled.li<NavItemProps>`
       css`
         &:after {
           width: 0;
-          content: " ";
+          content: ' ';
           display: block;
         }
         &:hover,

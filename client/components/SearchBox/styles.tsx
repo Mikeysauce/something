@@ -1,15 +1,16 @@
-import styled, { css } from "styled-components";
-import { rem } from "polished";
+import styled, { css } from 'styled-components';
+import { rem } from 'polished';
+
 interface SearchContainerProps {
   focus?: boolean;
 }
 
 const SearchContainer = styled.aside<SearchContainerProps>`
-  border: 1px solid #979797;
+  border: 1px solid ${(props) => props.theme.text.darkGrey};
   border-radius: 4px;
   display: flex;
   align-items: center;
-  padding: 0 ${rem("16px")};
+  padding: 0 ${rem('16px')};
   position: relative;
   ${(props) =>
     props.focus &&

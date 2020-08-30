@@ -1,4 +1,5 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
+import { rem } from 'polished';
 
 const baseStyles = css`
   *,
@@ -13,26 +14,29 @@ const baseStyles = css`
   h5,
   h6,
   p {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   p:not(:last-of-type) {
-    margin-bottom: 1rem;
+    margin-bottom: ${rem('16px')};
   }
   h1 {
-    font-size: 3rem;
+    font-size: ${rem('48px')};
   }
   h2 {
-    font-size: 2.5rem;
+    font-size: ${rem('44px')};
   }
   h3 {
-    font-size: 2.25rem;
+    font-size: ${rem('40px')};
   }
   h4 {
-    font-size: 2.15rem;
+    font-size: ${rem('36px')};
   }
   h5,
   h6 {
-    font-size: 1.5rem;
+    font-size: ${rem('24px')};
+  }
+  .heading__group {
+    margin-bottom: ${rem('16px')};
   }
 `;
 

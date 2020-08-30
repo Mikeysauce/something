@@ -1,5 +1,5 @@
-import { GetServerSideProps } from "next";
-import axios from "axios";
+import { GetServerSideProps } from 'next';
+import withSession from '../util/session';
 
 const Home = ({ data }) => (
   <div>
@@ -7,23 +7,21 @@ const Home = ({ data }) => (
   </div>
 );
 
-export const getServerSideProps: GetServerSideProps = async ({
-  req,
-  res,
-  query,
-}) => {
-  try {
-    const { data } = await axios.get("http://localhost:3000/api/users");
-    return {
-      props: {
-        data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {},
-    };
+export const getServerSideProps: GetServerSideProps = withSession(
+  async function ({ req, res }) {
+    const { isLoggedIn } = req.session.get('user') || { isLoggedIn: false };
+    try {
+      return {
+        props: {
+          isLoggedIn,
+        },
+      };
+    } catch (error) {
+      return {
+        props: {},
+      };
+    }
   }
-};
+);
 
 export default Home;

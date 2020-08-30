@@ -1,15 +1,22 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import axios from "axios";
+import { withIronSession, Session } from 'next-iron-session';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function getTodos(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  try {
-    const { data } = await axios.get("http://localhost:8000/users");
-    res.send(data);
-  } catch (error) {
-    console.log(error);
-    res.status(error?.response?.status || 503).send("");
-  }
+export interface SessionRequest extends NextApiRequest {
+  session: Session;
 }
+
+function handler(req: SessionRequest, res: NextApiResponse) {
+  const user = req.session.get('user');
+  if (user) {
+    return res.send({ user });
+  }
+  return res.send('not logged in');
+}
+
+export default withIronSession(handler, {
+  password: 'complex_password_at_least_32_characters_long',
+  cookieOptions: {
+    secure: process.env.NODE_ENV === 'production',
+  },
+  cookieName: 'next-iron-session',
+});

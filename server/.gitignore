@@ -1,4 +1,6 @@
-.env
-node_modules
-*.sql
-dist
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/

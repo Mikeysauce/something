@@ -1,7 +1,15 @@
-import { Pool } from 'pg';
+import Knex from 'knex';
+const db = Knex({
+  client: 'postgresql',
+  connection: {
+    database: 'pern',
+    user: 'mikey',
+    password: process.env.PGPASSWORD,
+  },
+  pool: {
+    min: 0,
+    max: 50,
+  },
+});
 
-const pool = new Pool();
-
-const query = (text: string, params?: any) => pool.query(text, params);
-
-export { query };
+export { db };
